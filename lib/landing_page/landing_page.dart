@@ -5,9 +5,29 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rent_na_teknoy/auth/sign_in/main_page.dart';
 import 'package:rent_na_teknoy/auth/sign_in/sign_in.dart';
 import 'package:rent_na_teknoy/auth/sign_up/sign_up.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class LandingPage extends StatelessWidget {
+class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
+
+  @override
+  State<LandingPage> createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {
+  
+  //checks user if signed in or out
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   FirebaseAuth.instance.authStateChanges().listen((User? user) {
+  //     if (user == null) {
+  //       print('User is currently signed out!');
+  //     } else {
+  //       print('User is signed in!');
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +52,8 @@ class LandingPage extends StatelessWidget {
                     height: 63.h,
                   ),
                   Padding(
-                      padding:  EdgeInsets.only(left: 29.w, bottom : 38.h, right: 34.w),
+                      padding: EdgeInsets.only(
+                          left: 29.w, bottom: 38.h, right: 34.w),
                       child: Column(
                         children: [
                           Row(
@@ -50,9 +71,8 @@ class LandingPage extends StatelessWidget {
                               Text(
                                 "Your renting need in one place",
                                 style: GoogleFonts.poppins(
-                                  fontSize: 30.sp,
-                                  fontWeight: FontWeight.w500
-                                ),
+                                    fontSize: 30.sp,
+                                    fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
                                 height: 1.h,
@@ -69,8 +89,14 @@ class LandingPage extends StatelessWidget {
                           SizedBox(height: 21.h),
                           //Sign In Button
                           GestureDetector(
-                            onTap : () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MainPage(destinationPage: SignIn(),)));
+                            onTap: () {
+                              // Navigator.push(context, MaterialPageRoute(builder: (context) => const SignIn()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const MainPage(
+                                            destinationPage: SignIn(),
+                                          )));
                             },
                             child: Container(
                               height: 53.h,
@@ -93,8 +119,14 @@ class LandingPage extends StatelessWidget {
                           SizedBox(height: 9.h),
                           //Sign up Button
                           GestureDetector(
-                            onTap : () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MainPage(destinationPage: SignUp(),)));
+                            onTap: () {
+                              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignUp()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const MainPage(
+                                            destinationPage: SignUp(),
+                                          )));
                             },
                             child: Container(
                                 height: 53.h,

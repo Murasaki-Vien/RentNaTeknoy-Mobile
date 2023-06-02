@@ -25,7 +25,10 @@ class _SignUpState extends State<SignUp> {
   final _checkUserPass = TextEditingController();
 
   Future signUp() async {
-    // 
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: _userEmailController.text.trim(), 
+      password: _userpassController.text.trim()
+    );
   }
 
   @override

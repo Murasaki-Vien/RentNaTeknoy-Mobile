@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
       return const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: MainPage(destinationPage: LandingPage()),
+        home: MainPage(destinationPage : LandingPage()),
       );
     });
   }

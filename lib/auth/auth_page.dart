@@ -1,0 +1,20 @@
+// import 'package:flutter/material.dart';
+// import 'package:rent_na_teknoy/auth/sign_up/sign_up.dart';
+
+// class AuthPage extends StatefulWidget {
+//   const AuthPage({super.key});
+
+//   @override
+//   State<AuthPage> createState() => _AuthPageState();
+// }
+
+// class _AuthPageState extends State<AuthPage> {
+
+//   bool showLoginPage = true;
+//   @override
+//   Widget build(BuildContext context) {
+//     if (showLoginPage){
+//       return SignIn()
+//     }
+//   }
+// }
