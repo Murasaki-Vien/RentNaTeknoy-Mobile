@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:rent_na_teknoy/auth/verify_email_page.dart';
 // import 'package:rent_na_teknoy/auth/sign_in/sign_in.dart';
 // import 'package:rent_na_teknoy/landing_page/landing_page.dart';
-import 'package:rent_na_teknoy/logged_in_user/homepage/homepage.dart';
+//import 'package:rent_na_teknoy/logged_in_user/homepage/homepage.dart';
 
 class MainPage extends StatelessWidget {
   final Widget destinationPage;
@@ -21,7 +22,7 @@ class MainPage extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }else if (userSnapshot.hasData) {
               print('User Found');
-              return Homepage();
+              return VerifyEmailPage();
             } else {
               print('User NOT FOUND');
               return destinationPage;

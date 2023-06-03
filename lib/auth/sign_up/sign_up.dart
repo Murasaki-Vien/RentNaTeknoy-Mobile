@@ -25,10 +25,17 @@ class _SignUpState extends State<SignUp> {
   final _checkUserPass = TextEditingController();
 
   Future signUp() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: _userEmailController.text.trim(), 
-      password: _userpassController.text.trim()
-    );
+    if (_samePass == true) {
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: _userEmailController.text.trim(),
+            password: _userpassController.text.trim());
+      } on FirebaseAuthException catch (e) {
+        print("MESSAGE: $e");
+      }
+    } else {
+      print("PASSWORD DO NOT MATCH");
+    }
   }
 
   @override
