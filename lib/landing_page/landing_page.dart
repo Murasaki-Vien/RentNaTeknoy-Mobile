@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rent_na_teknoy/auth/sign_in/main_page.dart';
 import 'package:rent_na_teknoy/auth/sign_in/sign_in.dart';
 import 'package:rent_na_teknoy/auth/sign_up/sign_up.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
