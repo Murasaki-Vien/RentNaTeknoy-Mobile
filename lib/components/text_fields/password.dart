@@ -1,7 +1,7 @@
 //or use this if you want StatefullWidget
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:rent_na_teknoy/constants/constant.dart';
 
 class Password extends StatefulWidget {
   final String hintText;
@@ -37,10 +37,7 @@ class _PasswordState extends State<Password> {
           controller : widget.controller,
           decoration : InputDecoration(
               border : InputBorder.none,
-              hintStyle: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 15.sp,
-                  color: const Color(0xffCDCDCD)),
+              hintStyle: hintStyle,
               hintText: widget.hintText,
               suffixIcon: GestureDetector(
                 onTap : () {

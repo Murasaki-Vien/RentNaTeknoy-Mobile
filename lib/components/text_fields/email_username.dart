@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:rent_na_teknoy/constants/constant.dart';
 
 class EmailUsernameField extends StatelessWidget {
   final String hintText;
@@ -29,10 +29,7 @@ class EmailUsernameField extends StatelessWidget {
           controller : controller,
           decoration: InputDecoration(
             border: InputBorder.none,
-            hintStyle: GoogleFonts.poppins(
-                fontWeight: FontWeight.w600,
-                fontSize: 15.sp,
-                color: const Color(0xffCDCDCD)),
+            hintStyle: hintStyle,
             hintText: hintText,
           ),
         ),
