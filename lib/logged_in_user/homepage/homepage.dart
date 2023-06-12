@@ -1,9 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rent_na_teknoy/components/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:rent_na_teknoy/components/text_fields/search_bar.dart';
 import 'package:rent_na_teknoy/constants/constant.dart';
 
@@ -15,7 +15,48 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  String userName = '';
+
   final user = FirebaseAuth.instance.currentUser!;
+  Future<void> getUserData() async {
+    final user = FirebaseAuth.instance.currentUser!;
+    if (user != null) {
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get()
+          .then((value) {
+        setState(() {
+          userName = value.data()!['username'].toString();
+        });
+      });
+      //userName = user.displayName.toString();
+    }
+    // FirebaseFirestore.instance
+    //     .collection('users')
+    //     .doc(user.uid)
+    //     .get()
+    //     .then((value) {
+    //   setState(() {
+    //     userName = value.data()!['username'].toString();
+    //   });
+    // });
+    print("USERNAME IS: ${user.uid}");
+
+    //   final docUserData = await FirebaseFirestore.instance
+    //       .collection('users')
+    //       .doc(user.uid)
+    //       .get();
+
+    // userName = docUserData.data()!['username'] as String;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUserData();
+  }
+
   int? value = 0;
   bool val = false;
 
@@ -36,10 +77,16 @@ class _HomepageState extends State<Homepage> {
                       Row(
                         children: [
                           Text(
-                            "Hi {Name of the user}",
+                            "Hi ${userName}",
                             style: GoogleFonts.poppins(
                                 fontSize: 25.sp, fontWeight: FontWeight.w600),
-                          ),
+                          )
+
+                          // Text(
+                          //   "Hi $userName",
+                          //   style: GoogleFonts.poppins(
+                          //       fontSize: 25.sp, fontWeight: FontWeight.w600),
+                          // ),
                         ],
                       ),
                       SizedBox(

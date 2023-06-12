@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,15 +28,33 @@ class _SignUpState extends State<SignUp> {
   Future signUp() async {
     if (_samePass == true) {
       try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        final user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: _userEmailController.text.trim(),
             password: _userpassController.text.trim());
+        await user.user!.updateDisplayName(_userName.text);
+
+        addUserDetails(
+          _userName.text.trim(), 
+          _userEmailController.text.trim(),
+          user.user!.uid
+        );
+
       } on FirebaseAuthException catch (e) {
         print("MESSAGE: $e");
       }
     } else {
       print("PASSWORD DO NOT MATCH");
     }
+  }
+
+  Future addUserDetails(String username, String email, String uid) async {
+    final document = await FirebaseFirestore.instance.collection('users').doc(uid);
+    //String id = document.id;
+    document.set({
+      //'id': id,
+      'username': username,
+      'email': email,
+    });
   }
 
   @override
