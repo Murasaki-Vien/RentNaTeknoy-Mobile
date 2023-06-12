@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:rent_na_teknoy/components/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:rent_na_teknoy/logged_in_user/homepage/homepage.dart';
 
 class VerifyEmailPage extends StatefulWidget {
@@ -58,7 +59,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
 
   @override
   Widget build(BuildContext context) => _isEmailVerified
-      ? Homepage()
+      ? BottomNavBar()
       : Scaffold(
           appBar: AppBar(
           title: const Text('Verify Email'),
